@@ -10,12 +10,12 @@ function App() {
     }
   }, { names: [], name: "" })
 
+  const showElements = (array,key) => (array[key].map((i) => (<p>{i}</p>)))
+  
   return (
     <div className="App">
       <div>
-        {state.names.map((i, j) => (
-           <div key={j}>{i}</div>
-           ))}
+        {showElements(state, 'names')}
       </div>
       <input 
         type="text"
