@@ -1,28 +1,53 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-function Counter({value}) {
-  let [count, setCount] = useState(10)
-  const addOne = () => setCount(count+1)
-  const [name, setName] = useState(() => Jack)
-  // arrow function on useState to have a initial value after refresh 
+function NameList() {
+  const [list, setList] = useState(["Jack", "Jill", "John"]);
+  const [name, setName] = useState(() => "Jack");
+  // arrow function on useState to have a initial value
   // setter enqueue a request to rerender the component
-  return (
-    <div className="App">
-      <button onClick={addOne}>{count}</button>
-    </div>
-  )
-}
-
-const App = () => {
-  return(
-    <>
-    <Counter />
-    <Counter />
-    <Counter />
-    <Counter />
-
-    </>
-  )
-}
-
-export default App
+    const onAddName = () => {
+      setList([...list, name]);
+      setName("");
+    };
+  
+    return (
+      <div>
+        <ul>
+          {list.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button onClick={onAddName}>Add Name</button>
+      </div>
+    );
+  }
+  
+  function Counter() {
+    const [count, setCount] = useState(10);
+  
+    function addOne() {
+      setCount(count + 1);
+    }
+  
+    return (
+      <div className="App">
+        <button onClick={addOne}>Count = {count}</button>
+      </div>
+    );
+  }
+  
+  function App() {
+    return (
+      <div>
+        <Counter />
+        <NameList />
+      </div>
+    );
+  }
+  
+  export default App;
