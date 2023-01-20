@@ -10,8 +10,8 @@ function App() {
     }
   }, { names: [], name: "" })
 
-  const showElements = (array,key) => (array[key].map((i) => (<p>{i}</p>)))
-  
+  const showElements = (object, key) => (object[key].map((i) => (<p>{i}</p>)))
+
   return (
     <div className="App">
       <div>
