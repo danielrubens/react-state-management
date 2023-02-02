@@ -1,6 +1,19 @@
 import { useReducer } from 'react'
 
-function App() {
+function UseForm(){
+  useReducer((state, action) => { ({...state, ...action }) }, { fisrt: "", last: "" })
+
+  return (
+    <div>
+      <input type="text" value={state.first} />
+      <input type="text" value={state.last} />
+    </div>
+  )
+
+
+}
+
+function NameList() {
   const [state, dispatch] = useReducer((state, action) => {
     switch(action.type){
       case 'SET_NAME':
@@ -30,4 +43,4 @@ function App() {
   )
 }
 
-export default App
+export default NameList
