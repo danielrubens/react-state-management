@@ -1,16 +1,17 @@
 import { useReducer } from 'react'
 
 function UseForm(){
-  useReducer((state, action) => { ({...state, ...action }) }, { fisrt: "", last: "" })
-
+  const initialState = {Name: "", Lastname: "", Role: "" }
+  const [state, setState] = useReducer((state, action) => ({...state, ...action }), initialState)
+  const keys = Object.keys(state)
   return (
     <div>
-      <input type="text" value={state.first} />
-      <input type="text" value={state.last} />
+      {keys.map((_, index) =>(
+        <input type="text" onChange={({target}) => setState({[keys[index]]: target.value})}/>
+      ) )}
+      {keys.map((el, index) => (<p>{`${keys[index]} : ${state[el]}`}</p>))}
     </div>
   )
-
-
 }
 
 function NameList() {
@@ -43,4 +44,13 @@ function NameList() {
   )
 }
 
-export default NameList
+function App(){
+  return(
+    <div>
+      <UseForm />
+      <NameList />
+    </div>
+  )
+}
+
+export default App;
