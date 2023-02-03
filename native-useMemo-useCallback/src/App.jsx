@@ -8,11 +8,12 @@ function SortedList({ list, sortFunc }){
   return (<div>{sortedList.join(", ")}</div>)
 }
 
+const sortFunc = (a,b) => a.localeCompare(b) * -1
+
 function App() {
   const [numbers] = useState([10,20,30])
   const total = useMemo(() => numbers.reduce((a,b) => a+b, 0), [numbers])
   const [names] = useState(["John", "Paul", "George", "Ringo"])
-  const sortFunc = (a,b) => a.localeCompare(b) * -1
 
   return (
     <div>
