@@ -6,6 +6,12 @@ function App() {
   
   // useEffect takes a function and call once the DOM is rendered or
   // when the dependencie array changes
+
+  const Stopwatch = () => {
+    const [time, setTime] = useState(0)
+    useEffect(() => { setInterval(() => { setTime((time) => time+1)}, 1000) }, [])
+    return (<div>{`Time: ${time}`}</div>)
+  }
   
   useEffect(() => {
     fetch("/names.json").then((response) => response.json().then((data) => setNames(data)))
@@ -19,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <Stopwatch />
       <div>{names.map((name) => (
           <button onClick={() => onSelectedNameChange(name)}>{name}</button>))}
       </div>
