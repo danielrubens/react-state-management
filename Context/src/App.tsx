@@ -12,21 +12,21 @@ interface Pokemon {
   speed: number;
 }
 
-const usePokemon = () => {
-  const [pokemon, setPokemon] = useState([])
+const usePokemon = () : { pokemon: Pokemon[] } => {
+  const [pokemon, setPokemon] = useState<Pokemon[]>([])
   useEffect(() => {
     fetch('./pokemon.json').then((response) => response.json()).then((data) => setPokemon(data))
   }, [])
   return {pokemon}
-
 }
 
 function App() {
+  const {pokemon} = usePokemon()
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <p>Hello</p>
+      <p>{JSON.stringify(pokemon)}</p>
     </div>
   )
 }
