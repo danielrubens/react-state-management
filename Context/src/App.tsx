@@ -1,4 +1,4 @@
-import {usePokemon, usePokemonSource, PokemonContext} from './store'
+import {usePokemon} from './store'
 
 const PokemonList = () => {
   const { pokemon }= usePokemon()
@@ -13,9 +13,9 @@ const PokemonList = () => {
 function App() {
   return (
     <div className="App">
-      <PokemonContext.Provider value={usePokemonSource()}>
+      {/* <PokemonContext.Provider value={usePokemonSource()}> */}
         <PokemonList />
-      </PokemonContext.Provider>
+      {/* </PokemonContext.Provider> */}
     </div>
   )
 }

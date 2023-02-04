@@ -12,7 +12,7 @@ interface Pokemon {
     speed: number;
   }
   
- export const usePokemonSource = () : { pokemon: Pokemon[] } => {
+ export const usePokemon = () : { pokemon: Pokemon[] } => {
     const [pokemon, setPokemon] = useState<Pokemon[]>([])
     useEffect(() => {
       fetch('./pokemon.json').then((response) => response.json()).then((data) => setPokemon(data))
@@ -20,6 +20,6 @@ interface Pokemon {
     return {pokemon}
   }
   
-  export const PokemonContext = createContext<ReturnType<typeof usePokemonSource>>({} as unknown as ReturnType<typeof usePokemonSource>)
+  // export const PokemonContext = createContext<ReturnType<typeof usePokemonSource>>({} as unknown as ReturnType<typeof usePokemonSource>)
   
-  export const usePokemon = () => useContext(PokemonContext)
+  // export const usePokemon = () => useContext(PokemonContext)
