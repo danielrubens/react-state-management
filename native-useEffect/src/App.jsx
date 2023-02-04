@@ -9,7 +9,10 @@ function App() {
 
   const Stopwatch = () => {
     const [time, setTime] = useState(0)
-    useEffect(() => { setInterval(() => { setTime((time) => time+1)}, 1000) }, [])
+    useEffect(() => { 
+      const interval = setInterval(() => { setTime((time) => time+1)}, 1000) 
+      return () => clearInterval(interval)
+    }, [])
     return (<div>{`Time: ${time}`}</div>)
   }
   
