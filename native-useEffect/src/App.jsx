@@ -9,7 +9,6 @@ function App() {
   
   useEffect(() => {
     fetch("/names.json").then((response) => response.json().then((data) => setNames(data)))
-
   }, [])
 
   return (
