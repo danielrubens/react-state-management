@@ -20,13 +20,23 @@ const usePokemon = () : { pokemon: Pokemon[] } => {
   return {pokemon}
 }
 
+const PokemonList = ({pokemon} : {pokemon: Pokemon[]}) => {
+  return(
+    <div>
+      {pokemon.map((p, index) => (<p key={index}>{p.name}</p>))}
+    </div>
+  )
+  
+}
+
 function App() {
   const {pokemon} = usePokemon()
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <p>{JSON.stringify(pokemon)}</p>
+      {/* {PokemonList({pokemon})} */}
+    <PokemonList pokemon={pokemon} />
     </div>
   )
 }
