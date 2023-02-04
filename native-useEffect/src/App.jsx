@@ -11,16 +11,16 @@ function App() {
     fetch("/names.json").then((response) => response.json().then((data) => setNames(data)))
   }, [])
   
-  const [selectedName, setSelectName] = useState(null)
   const [selectedNameDetails, setSelectNameDetails] = useState(null)
-  useEffect(() => {
-    fetch(`/${selectedName}.json`).then((response) => response.json().then((data) => setSelectNameDetails(data)))
-  }, [selectedName])
+
+  const onSelectedNameChange = (name) => {
+    fetch(`/${name}.json`).then((response) => response.json().then((data) => setSelectNameDetails(data)))
+  }
 
   return (
     <div className="App">
       <div>{names.map((name) => (
-          <button onClick={() => setSelectName(name)}>{name}</button>))}
+          <button onClick={() => onSelectedNameChange(name)}>{name}</button>))}
       </div>
       <div>{JSON.stringify(selectedNameDetails)}</div>
     </div>
